@@ -22,7 +22,6 @@ public class TurretConstruction : Editor
         index = 0;
     }
 
-
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
@@ -36,9 +35,10 @@ public class TurretConstruction : Editor
         if(GUILayout.Button("Build Object"))
         {
             turret.AttachWeapons();
-            foreach (var item in weapons)
+            foreach (var item in nameList)
             {
                 Debug.Log(item.ToString());
+                
             }
         }
      
