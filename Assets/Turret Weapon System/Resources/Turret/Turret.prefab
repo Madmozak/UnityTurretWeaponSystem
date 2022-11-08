@@ -160,7 +160,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b46d3c386500840b7ff7d44e355f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  weaponList:
+  - {fileID: 3235054911426786289, guid: 8ef0fb8d81abb6b41b95df8a6ca8365b, type: 3}
+  - {fileID: 6455399122116883288, guid: fcae07ae946d25942a99f4bcca4e97c7, type: 3}
+  - {fileID: 1669823353672767002, guid: b2b66f284a98f394d8d4464167cf5ed5, type: 3}
+  - {fileID: 3500189266591872046, guid: c4bb05cc92625f244a5a4fad5ef15c0b, type: 3}
+  weapon: {fileID: 0}
+  testString: test1
   turretMain: {fileID: 0}
   shootDelayBetweenWeapons: 0
   target: {fileID: 0}
