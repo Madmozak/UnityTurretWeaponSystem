@@ -32,17 +32,32 @@ public class TurretConstruction : Editor
         //TurretBase turretBase = (TurretBase)target;
         turret.testString = nameList[index];
 
-        if(GUILayout.Button("Build Object"))
+        if(GUILayout.Button("Build Weapon 1"))
         {
+
+            for (var i = turret.weaponAttachements[0].childCount - 1; i >= 0; i--)
+            {
+                Object.DestroyImmediate(turret.weaponAttachements[0].GetChild(i).gameObject);
+            }
+            Instantiate(weapons[index], turret.weaponAttachements[0]);
+          
+            turret.AttachWeapons();
+
+        }
+
+        if (GUILayout.Button("Build Weapon 2"))
+        {
+            //DestroyImmediate(turret.weaponAttachements[1].transform.GetChild(0).gameObject);
+            
+            for (var i = turret.weaponAttachements[1].childCount - 1; i >= 0; i--)
+            {
+                Object.DestroyImmediate(turret.weaponAttachements[1].GetChild(i).gameObject);
+            }
             Instantiate(weapons[index], turret.weaponAttachements[1]);
             turret.AttachWeapons();
-            foreach (var item in nameList)
-            {
-                Debug.Log(item.ToString());
-                
-            }
+
         }
-     
-        
+
+
     }
 }
