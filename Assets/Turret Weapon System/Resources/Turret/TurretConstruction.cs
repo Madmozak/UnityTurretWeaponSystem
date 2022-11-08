@@ -34,6 +34,7 @@ public class TurretConstruction : Editor
 
         if(GUILayout.Button("Build Object"))
         {
+            Instantiate(weapons[index], turret.weaponAttachements[1]);
             turret.AttachWeapons();
             foreach (var item in nameList)
             {

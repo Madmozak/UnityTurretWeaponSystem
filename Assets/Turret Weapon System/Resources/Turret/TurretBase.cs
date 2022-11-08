@@ -13,6 +13,7 @@ public class TurretBase : MonoBehaviour
     // in miliseconds
     [SerializeField] private int shootDelayBetweenWeapons;
 
+    public Transform[] weaponAttachements;
     public GameObject target;
 
     public void AttachWeapons()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6451311704575391053}
   m_Layer: 0
-  m_Name: WeaponMount
+  m_Name: WeaponMount1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,9 +166,12 @@ MonoBehaviour:
   - {fileID: 1669823353672767002, guid: b2b66f284a98f394d8d4464167cf5ed5, type: 3}
   - {fileID: 3500189266591872046, guid: c4bb05cc92625f244a5a4fad5ef15c0b, type: 3}
   weapon: {fileID: 0}
-  testString: test1
+  testString: Cannon (UnityEngine.GameObject)
   turretMain: {fileID: 0}
   shootDelayBetweenWeapons: 0
+  weaponAttachements:
+  - {fileID: 6451311704575391053}
+  - {fileID: 1271672673873989984}
   target: {fileID: 0}
 --- !u!1 &3844591419604267842
 GameObject:
@@ -349,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271672673873989984}
   m_Layer: 0
-  m_Name: WeaponMount
+  m_Name: WeaponMount2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
