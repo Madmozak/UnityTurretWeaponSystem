@@ -13,10 +13,6 @@ public class TurretConstruction : Editor
     void OnEnable()
     {
         weapons = Resources.LoadAll<GameObject>("Weapons");
-    }
-
-    void Init()
-    {
         nameList = new string[weapons.Length];
         foreach (var item in weapons)
         {
@@ -25,6 +21,7 @@ public class TurretConstruction : Editor
         }
         index = 0;
     }
+
 
     public override void OnInspectorGUI()
     {
