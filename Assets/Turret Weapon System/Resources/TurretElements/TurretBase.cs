@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class TurretBase : MonoBehaviour
 {
-    public WeaponBase[] weaponList;
-    public WeaponBase weapon;
-    public string testString;
+    public List<GameObject> weapons;
+    
+    //public string testString;
     [SerializeField] private GameObject turretMain;
-    // in miliseconds
-    [SerializeField] private int shootDelayBetweenWeapons;
+    [SerializeField] private GameObject turretBase;
 
-    public Transform[] weaponAttachements;
+    [HideInInspector] public Transform[] weaponAttachements;
     public GameObject target;
 
     public void AttachWeapons()
