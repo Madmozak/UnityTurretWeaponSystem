@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-public class TurretBase : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     public List<GameObject> weapons;
     
