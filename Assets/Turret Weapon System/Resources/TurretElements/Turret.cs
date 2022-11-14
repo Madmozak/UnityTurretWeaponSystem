@@ -20,8 +20,10 @@ public class Turret : MonoBehaviour
     public int WeaponIndex1 { get; set; }
     [HideInInspector]
     public int WeaponIndex2 { get; set; }
-    [HideInInspector] public Transform[] weaponAttachements;
+    [HideInInspector] 
+    public Transform[] weaponAttachements;
     public GameObject target;
+    [HideInInspector]
     public float heightOfMainComponent;
     public void Start()
     {

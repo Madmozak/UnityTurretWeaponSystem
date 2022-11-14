@@ -19,6 +19,8 @@ public class TurretConstruction : Editor
     int turretMainComponentsIndex;
     public float heightOfMainComponent;
 
+    public Object[][] testGameOjbjectList;
+
     void OnEnable()
     {
         var turretBaseScript = target as Turret;
@@ -35,6 +37,8 @@ public class TurretConstruction : Editor
         turretBasesIndex = turretBaseScript.TurretBaseIndex;
         turretMainComponentsIndex = turretBaseScript.TurretMainComponentIndex;
         heightOfMainComponent = turretBaseScript.heightOfMainComponent;
+
+        testGameOjbjectList = new Object[turretBaseScript.weaponAttachements.Length][];
 
         for (int i = 0; i < weapons.Length; i++)
         {
@@ -75,10 +79,8 @@ public class TurretConstruction : Editor
         EditorGUI.BeginChangeCheck();
         turretBaseScript.WeaponIndex1 = weaponList1Index;
         turretBaseScript.WeaponIndex2 = weaponList2Index;
-        GUILayout.Label("Weapon1");
-        weaponList1Index = EditorGUILayout.Popup(weaponList1Index, weaponList1);
-        GUILayout.Label("Weapon2");
-        weaponList2Index = EditorGUILayout.Popup(weaponList2Index, weaponList2);
+        weaponList1Index = EditorGUILayout.Popup("Weapon1", weaponList1Index, weaponList1);
+        weaponList2Index = EditorGUILayout.Popup("Weapon2", weaponList2Index, weaponList2);
 
         if (EditorGUI.EndChangeCheck())
         {
