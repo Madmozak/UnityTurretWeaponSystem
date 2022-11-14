@@ -7,13 +7,30 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public List<GameObject> weapons;
-    
-    //public string testString;
-    [SerializeField] private GameObject turretMain;
-    [SerializeField] private GameObject turretBase;
 
+
+    public GameObject TurretBase;
+
+    public GameObject TurretMainComponent;
+    [HideInInspector]
+    public int TurretBaseIndex { get; set; }
+    [HideInInspector]
+    public int TurretMainComponentIndex { get; set; }
+    [HideInInspector]
+    public int WeaponIndex1 { get; set; }
+    [HideInInspector]
+    public int WeaponIndex2 { get; set; }
     [HideInInspector] public Transform[] weaponAttachements;
     public GameObject target;
+    public float heightOfMainComponent;
+    public void Start()
+    {
+        
+    }
+    public void Update()
+    {
+        
+    }
 
     public void AttachWeapons()
     {
@@ -21,7 +38,7 @@ public class Turret : MonoBehaviour
     }
     private void TrackTarget()
     {
-        turretMain.transform.LookAt(target.transform);
+        TurretMainComponent.transform.LookAt(target.transform);
     }
 
     private async void FireWeapons()
