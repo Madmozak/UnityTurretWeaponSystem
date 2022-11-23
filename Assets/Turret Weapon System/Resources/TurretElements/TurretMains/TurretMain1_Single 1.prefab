@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3925510793794228422}
   - component: {fileID: 771165973423727184}
   - component: {fileID: 2468800952272755779}
+  - component: {fileID: -7406547262652035009}
   m_Layer: 0
   m_Name: TurretMain1_Single 1
   m_TagString: Untagged
@@ -169,6 +170,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-7406547262652035009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070184962760896106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb7f274e4218b94aa3a44c2e39cc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponMountTransforms:
+  - {fileID: 7451260621060885291}
 --- !u!1 &7137119222416215042
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +279,7 @@ GameObject:
   - component: {fileID: 7282757278271291583}
   - component: {fileID: 5044266070993199118}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: TurretBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

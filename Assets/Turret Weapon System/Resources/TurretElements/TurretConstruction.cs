@@ -17,9 +17,9 @@ public class TurretConstruction : Editor
     int weaponList2Index;
     int turretBasesIndex;
     int turretMainComponentsIndex;
-    public float heightOfMainComponent;
+    
 
-    public Object[][] testGameOjbjectList;
+    //public Object[][] testGameOjbjectList;
 
     void OnEnable()
     {
@@ -36,28 +36,22 @@ public class TurretConstruction : Editor
         weaponList2Index = turretBaseScript.WeaponIndex2;
         turretBasesIndex = turretBaseScript.TurretBaseIndex;
         turretMainComponentsIndex = turretBaseScript.TurretMainComponentIndex;
-        heightOfMainComponent = turretBaseScript.heightOfMainComponent;
 
-        testGameOjbjectList = new Object[turretBaseScript.weaponAttachements.Length][];
+        GenerateList(weaponList1, weapons);
+        GenerateList(weaponList2, weapons);
+        GenerateList(turretMainComponentsList, turretMainComponents);
+        GenerateList(turretBasesList, turretBases);
 
-        for (int i = 0; i < weapons.Length; i++)
+
+
+    }
+
+    private void GenerateList(string[] slist, GameObject[] olist)
+    {
+        for (int i = 0; i < olist.Length; i++)
         {
-            weaponList1[i] = weapons[i].ToString();
-            weaponList2[i] = weapons[i].ToString();
+            slist[i] = olist[i].ToString();
         }
-
-        for (int i = 0; i < turretBases.Length; i++)
-        {
-            turretBasesList[i] = turretBases[i].ToString();
-            
-        }
-
-        for (int i = 0; i < turretMainComponents.Length; i++)
-        {
-            turretMainComponentsList[i] = turretMainComponents[i].ToString();
-        }
-        
-        
     }
 
     public override void OnInspectorGUI()
@@ -84,18 +78,26 @@ public class TurretConstruction : Editor
 
         if (EditorGUI.EndChangeCheck())
         {
-            turretBaseScript.weapons.Clear();
-            foreach (var item in turretBaseScript.weaponAttachements)
+            if (turretBaseScript.TurretMainComponent is not null)
             {
-                for (var i = item.childCount - 1; i >= 0; i--)
+                turretBaseScript.weapons.Clear();
+                foreach (var item in turretBaseScript.TurretMainComponent.GetComponent<TurretMain>().weaponMountTransforms)
                 {
-                    DestroyImmediate(item.GetChild(i).gameObject);
+                    for (var i = item.childCount - 1; i >= 0; i--)
+                    {
+                        DestroyImmediate(item.GetChild(i).gameObject);
+                    }
                 }
+                turretBaseScript.weapons.Add(Instantiate(weapons[weaponList1Index], 
+                    turretBaseScript.TurretMainComponent.GetComponent<TurretMain>().weaponMountTransforms[0].transform));
 
-                
+                if(turretBaseScript.TurretMainComponent.GetComponent<TurretMain>().weaponMountTransforms.Count > 1)
+                {
+                    turretBaseScript.weapons.Add(Instantiate(weapons[weaponList2Index],
+                     turretBaseScript.TurretMainComponent.GetComponent<TurretMain>().weaponMountTransforms[1].transform));
+                }
             }
-            turretBaseScript.weapons.Add(Instantiate(weapons[weaponList1Index], turretBaseScript.weaponAttachements[0]));
-            turretBaseScript.weapons.Add(Instantiate(weapons[weaponList2Index], turretBaseScript.weaponAttachements[1]));
+            
         }
     }
 
@@ -120,16 +122,23 @@ public class TurretConstruction : Editor
         EditorGUI.BeginChangeCheck();
         GUILayout.Label("Turret Main Component");
         turretBaseScript.TurretMainComponentIndex = turretMainComponentsIndex;
-        turretBaseScript.heightOfMainComponent = heightOfMainComponent;
+        
         turretMainComponentsIndex = EditorGUILayout.Popup(turretMainComponentsIndex, turretMainComponentsList);
-        heightOfMainComponent = EditorGUILayout.Slider("Height",heightOfMainComponent, -10.0f, 10.0f);
+        
 
         if (EditorGUI.EndChangeCheck())
         {
-            DestroyImmediate(turretBaseScript.TurretMainComponent);
-            turretBaseScript.TurretMainComponent = null;
-            turretBaseScript.TurretMainComponent = Instantiate(turretMainComponents[turretMainComponentsIndex], 
-                turretBaseScript.transform.position + new Vector3(0,heightOfMainComponent,0), Quaternion.identity, turretBaseScript.transform);
+            if (turretBaseScript.TurretBase is not null)
+            {
+                DestroyImmediate(turretBaseScript.TurretMainComponent);
+
+                turretBaseScript.TurretMainComponent = Instantiate(turretMainComponents[turretMainComponentsIndex],
+                    turretBaseScript.TurretBase.GetComponent<TurretBase>().turretBaseMainBodyMount.transform.position,
+                    Quaternion.identity,
+                    turretBaseScript.transform);
+            }
+            
+
         }
 
     }
