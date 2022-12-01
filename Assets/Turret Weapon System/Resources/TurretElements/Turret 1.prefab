@@ -54,3 +54,4 @@ MonoBehaviour:
   - {fileID: 0}
   target: {fileID: 0}
   heightOfMainComponent: 0
+  randomize: 1

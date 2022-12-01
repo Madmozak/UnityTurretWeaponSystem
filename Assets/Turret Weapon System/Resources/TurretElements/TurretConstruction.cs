@@ -43,7 +43,23 @@ public class TurretConstruction : Editor
         GenerateList(turretBasesList, turretBases);
 
 
+        
+        if (turretBaseScript.randomize)
+        {
+            GenerateRandomTurret();
 
+        }
+
+    }
+
+    private void GenerateRandomTurret()
+    {
+        EditorGUI.BeginChangeCheck();
+        weaponList1Index = EditorGUILayout.Popup("Weapon1", Random.Range(0, weaponList1.Length - 1), weaponList1);
+        weaponList2Index = EditorGUILayout.Popup("Weapon2", Random.Range(0, weaponList2.Length - 1), weaponList2);
+        turretBasesIndex = EditorGUILayout.Popup(Random.Range(0, turretMainComponentsList.Length - 1), turretBasesList);
+        turretMainComponentsIndex = EditorGUILayout.Popup(Random.Range(0, turretMainComponentsList.Length-1), turretMainComponentsList);
+        EditorGUI.EndChangeCheck();
     }
 
     private void GenerateList(string[] slist, GameObject[] olist)
@@ -56,9 +72,8 @@ public class TurretConstruction : Editor
 
     public override void OnInspectorGUI()
     {
-        
+
         DrawDefaultInspector();
-        
         GUILayout.Space(20);
         GUILayout.Label("CONSTRUCTION SCRIPT", EditorStyles.boldLabel);
 

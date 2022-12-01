@@ -25,6 +25,8 @@ public class Turret : MonoBehaviour
     public GameObject target;
     [HideInInspector]
     public float heightOfMainComponent;
+
+    public bool randomize;
     public void Start()
     {
         
